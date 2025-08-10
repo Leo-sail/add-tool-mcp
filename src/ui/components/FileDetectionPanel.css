@@ -1,0 +1,489 @@
+/* 文件检测面板样式 */
+.file-detection-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+}
+
+/* 面板头部 */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  background: var(--vscode-sideBar-background);
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--vscode-sideBarTitle-foreground);
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* 高级选项 */
+.advanced-options {
+  padding: 16px;
+  background: var(--vscode-sideBar-background);
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vscode-input-foreground);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 2px;
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  font-size: 13px;
+  font-family: var(--vscode-font-family);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+  box-shadow: 0 0 0 1px var(--vscode-focusBorder);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+  font-family: var(--vscode-editor-font-family);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--vscode-input-foreground);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+/* 统计信息 */
+.detection-stats {
+  display: flex;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--vscode-badge-background);
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.stat-label {
+  color: var(--vscode-descriptionForeground);
+}
+
+.stat-value {
+  font-weight: 600;
+  color: var(--vscode-badge-foreground);
+}
+
+.stat-value.valid {
+  color: var(--vscode-gitDecoration-addedResourceForeground);
+}
+
+.stat-value.invalid {
+  color: var(--vscode-gitDecoration-deletedResourceForeground);
+}
+
+.stat-value.selected {
+  color: var(--vscode-list-highlightForeground);
+}
+
+/* 工具栏 */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--vscode-sideBar-background);
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.toolbar-left {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.toolbar-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.filter-select,
+.sort-select {
+  padding: 4px 8px;
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 2px;
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  font-size: 12px;
+  min-width: 120px;
+}
+
+.filter-select:focus,
+.sort-select:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+}
+
+/* 文件列表 */
+.file-list {
+  flex: 1;
+  overflow: auto;
+}
+
+/* 加载状态 */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: var(--vscode-descriptionForeground);
+}
+
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--vscode-progressBar-background);
+  border-top: 2px solid var(--vscode-progressBar-foreground);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+  color: var(--vscode-descriptionForeground);
+}
+
+.empty-state p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+}
+
+/* 文件表格 */
+.file-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-table-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px 80px 140px 120px;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--vscode-list-hoverBackground);
+  border-bottom: 1px solid var(--vscode-panel-border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vscode-list-inactiveSelectionForeground);
+}
+
+.file-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 80px 80px 140px 120px;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--vscode-list-dropBackground);
+  transition: background-color 0.15s ease;
+}
+
+.file-row:hover {
+  background: var(--vscode-list-hoverBackground);
+}
+
+.file-row.invalid {
+  opacity: 0.6;
+}
+
+.file-cell {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.file-cell.file-select {
+  justify-content: center;
+}
+
+.file-cell.file-name {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  min-width: 0;
+}
+
+.file-name-text {
+  font-weight: 500;
+  color: var(--vscode-list-activeSelectionForeground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-path {
+  font-size: 11px;
+  color: var(--vscode-descriptionForeground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-error {
+  font-size: 11px;
+  color: var(--vscode-errorForeground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-cell.file-confidence {
+  justify-content: center;
+}
+
+.confidence-badge {
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 40px;
+}
+
+.confidence-badge.confidence-high {
+  background: var(--vscode-gitDecoration-addedResourceForeground);
+  color: var(--vscode-editor-background);
+}
+
+.confidence-badge.confidence-medium {
+  background: var(--vscode-gitDecoration-modifiedResourceForeground);
+  color: var(--vscode-editor-background);
+}
+
+.confidence-badge.confidence-low {
+  background: var(--vscode-gitDecoration-deletedResourceForeground);
+  color: var(--vscode-editor-background);
+}
+
+.file-cell.file-size,
+.file-cell.file-modified {
+  font-size: 12px;
+  color: var(--vscode-descriptionForeground);
+}
+
+.file-cell.file-actions {
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+/* 推荐位置 */
+.recommendations {
+  padding: 16px;
+  background: var(--vscode-sideBar-background);
+}
+
+.recommendations h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vscode-sideBarTitle-foreground);
+}
+
+.recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recommendation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--vscode-input-background);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 4px;
+}
+
+.recommendation-path {
+  font-family: var(--vscode-editor-font-family);
+  font-size: 12px;
+  color: var(--vscode-textLink-foreground);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .file-table-header,
+  .file-row {
+    grid-template-columns: 30px 1fr 60px 100px;
+    gap: 4px;
+  }
+  
+  .file-cell.file-size,
+  .file-cell.file-confidence {
+    display: none;
+  }
+  
+  .toolbar {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  
+  .toolbar-left,
+  .toolbar-right {
+    justify-content: space-between;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .detection-stats {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* 滚动条样式 */
+.file-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.file-list::-webkit-scrollbar-track {
+  background: var(--vscode-scrollbarSlider-background);
+}
+
+.file-list::-webkit-scrollbar-thumb {
+  background: var(--vscode-scrollbarSlider-hoverBackground);
+  border-radius: 4px;
+}
+
+.file-list::-webkit-scrollbar-thumb:hover {
+  background: var(--vscode-scrollbarSlider-activeBackground);
+}
+
+/* 动画效果 */
+.file-row {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 焦点样式 */
+.file-row:focus-within {
+  background: var(--vscode-list-focusBackground);
+  outline: 1px solid var(--vscode-focusBorder);
+  outline-offset: -1px;
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .file-row {
+    border-bottom: 2px solid var(--vscode-contrastBorder);
+  }
+  
+  .confidence-badge {
+    border: 1px solid var(--vscode-contrastBorder);
+  }
+  
+  .recommendation-item {
+    border: 2px solid var(--vscode-contrastBorder);
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .file-detection-panel {
+    background: white;
+    color: black;
+  }
+  
+  .header-actions,
+  .toolbar,
+  .file-cell.file-actions {
+    display: none;
+  }
+  
+  .file-row {
+    border-bottom: 1px solid #ccc;
+  }
+}

@@ -1,0 +1,738 @@
+/* 配置编辑器样式 */
+
+.config-editor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--vscode-editor-background);
+}
+
+.config-editor.readonly {
+  opacity: 0.9;
+}
+
+/* 编辑器头部 */
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  background-color: var(--vscode-tab-activeBackground);
+}
+
+.editor-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tab-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: transparent;
+  color: var(--vscode-tab-inactiveForeground);
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: var(--vscode-tab-hoverBackground);
+  color: var(--vscode-tab-activeForeground);
+}
+
+.tab-button.active {
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+}
+
+.editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.changes-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--vscode-descriptionForeground);
+}
+
+.changes-indicator .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--vscode-notificationsWarningIcon-foreground);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 验证面板 */
+.validation-panel {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  background-color: var(--vscode-editor-background);
+}
+
+.validation-errors {
+  margin-bottom: 12px;
+}
+
+.validation-errors h4 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: var(--vscode-errorForeground);
+}
+
+.validation-errors ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style: none;
+}
+
+.validation-errors li {
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--vscode-errorForeground);
+  position: relative;
+}
+
+.validation-errors li::before {
+  content: '•';
+  position: absolute;
+  left: -12px;
+  color: var(--vscode-errorForeground);
+}
+
+.validation-warnings {
+  margin-bottom: 12px;
+}
+
+.validation-warnings h4 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  color: var(--vscode-notificationsWarningIcon-foreground);
+}
+
+.validation-warnings ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style: none;
+}
+
+.validation-warnings li {
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--vscode-notificationsWarningIcon-foreground);
+  position: relative;
+}
+
+.validation-warnings li::before {
+  content: '•';
+  position: absolute;
+  left: -12px;
+  color: var(--vscode-notificationsWarningIcon-foreground);
+}
+
+.validation-success {
+  font-size: 13px;
+  color: var(--vscode-terminal-ansiGreen);
+  font-weight: 500;
+}
+
+/* 编辑器内容 */
+.editor-content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+}
+
+/* 可视化编辑器 */
+.visual-editor {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.config-section {
+  margin-bottom: 32px;
+  padding: 20px;
+  background-color: var(--vscode-editor-background);
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 8px;
+}
+
+.config-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h3 {
+  margin: 0;
+}
+
+/* 表单组件 */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vscode-foreground);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--vscode-input-border);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+  box-shadow: 0 0 0 1px var(--vscode-focusBorder);
+}
+
+.form-group input:read-only,
+.form-group textarea:read-only {
+  background-color: var(--vscode-input-background);
+  opacity: 0.7;
+}
+
+/* 服务列表 */
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.empty-services {
+  text-align: center;
+  padding: 32px;
+  color: var(--vscode-descriptionForeground);
+}
+
+.empty-services p {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* 服务编辑器 */
+.service-editor {
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 6px;
+  background-color: var(--vscode-editor-background);
+  overflow: hidden;
+}
+
+.service-editor.disabled {
+  opacity: 0.6;
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: var(--vscode-tab-activeBackground);
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.service-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: var(--vscode-foreground);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+.expand-button:hover {
+  background-color: var(--vscode-toolbar-hoverBackground);
+}
+
+.service-id {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  color: var(--vscode-foreground);
+  min-width: 150px;
+}
+
+.service-status {
+  margin-left: auto;
+  margin-right: 16px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.service-content {
+  padding: 16px;
+}
+
+/* 参数列表 */
+.args-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.arg-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.arg-item input {
+  flex: 1;
+}
+
+/* 环境变量列表 */
+.env-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.env-item,
+.env-add {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.env-key {
+  flex: 1;
+  max-width: 200px;
+}
+
+.env-value {
+  flex: 2;
+}
+
+.env-item span,
+.env-add span {
+  color: var(--vscode-descriptionForeground);
+  font-weight: bold;
+}
+
+/* JSON编辑器 */
+.json-editor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.json-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  background-color: var(--vscode-tab-activeBackground);
+}
+
+.json-error {
+  color: var(--vscode-errorForeground);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.json-textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  padding: 16px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+}
+
+.json-textarea:focus {
+  outline: none;
+}
+
+.json-textarea.error {
+  border-left: 3px solid var(--vscode-errorForeground);
+}
+
+/* 配置预览 */
+.config-preview {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.preview-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  background-color: var(--vscode-editor-background);
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 6px;
+}
+
+.preview-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+.preview-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: var(--vscode-tab-activeBackground);
+  border-radius: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--vscode-descriptionForeground);
+}
+
+.stat-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+.stat-value.active {
+  color: var(--vscode-terminal-ansiGreen);
+}
+
+.stat-value.disabled {
+  color: var(--vscode-errorForeground);
+}
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-list.disabled {
+  opacity: 0.7;
+}
+
+.service-preview {
+  padding: 12px;
+  background-color: var(--vscode-tab-activeBackground);
+  border-radius: 4px;
+  border-left: 3px solid var(--vscode-terminal-ansiGreen);
+}
+
+.service-list.disabled .service-preview {
+  border-left-color: var(--vscode-errorForeground);
+}
+
+.service-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+  margin-bottom: 4px;
+}
+
+.service-command {
+  margin-bottom: 4px;
+}
+
+.service-command code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 11px;
+  background-color: var(--vscode-textCodeBlock-background);
+  color: var(--vscode-textPreformat-foreground);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.service-env {
+  font-size: 11px;
+  color: var(--vscode-descriptionForeground);
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--vscode-descriptionForeground);
+  min-height: 400px;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.empty-state h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--vscode-foreground);
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .editor-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .editor-tabs {
+    justify-content: center;
+  }
+  
+  .editor-actions {
+    justify-content: center;
+  }
+  
+  .visual-editor {
+    max-width: none;
+  }
+  
+  .preview-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .editor-content {
+    padding: 12px;
+  }
+  
+  .config-section {
+    padding: 16px;
+  }
+  
+  .service-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .service-title {
+    justify-content: space-between;
+  }
+  
+  .arg-item,
+  .env-item,
+  .env-add {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  
+  .env-key,
+  .env-value {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .editor-actions {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .changes-indicator {
+    font-size: 11px;
+  }
+  
+  .service-id {
+    min-width: 100px;
+    font-size: 12px;
+  }
+}
+
+/* 动画效果 */
+.service-editor {
+  transition: opacity 0.3s ease;
+}
+
+.service-content {
+  transition: max-height 0.3s ease;
+}
+
+.tab-button {
+  transition: all 0.2s ease;
+}
+
+.button {
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+/* 焦点样式 */
+.tab-button:focus {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: 1px;
+}
+
+.expand-button:focus {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: 1px;
+}
+
+.checkbox-label:focus-within {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+/* 滚动条样式 */
+.editor-content::-webkit-scrollbar,
+.json-textarea::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.editor-content::-webkit-scrollbar-track,
+.json-textarea::-webkit-scrollbar-track {
+  background: var(--vscode-scrollbarSlider-background);
+}
+
+.editor-content::-webkit-scrollbar-thumb,
+.json-textarea::-webkit-scrollbar-thumb {
+  background: var(--vscode-scrollbarSlider-background);
+  border-radius: 4px;
+}
+
+.editor-content::-webkit-scrollbar-thumb:hover,
+.json-textarea::-webkit-scrollbar-thumb:hover {
+  background: var(--vscode-scrollbarSlider-hoverBackground);
+}
+
+/* 加载状态 */
+.config-editor.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.config-editor.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 错误状态 */
+.form-group.error input,
+.form-group.error textarea {
+  border-color: var(--vscode-errorForeground);
+}
+
+.form-group.error label {
+  color: var(--vscode-errorForeground);
+}
+
+/* 成功状态 */
+.form-group.success input,
+.form-group.success textarea {
+  border-color: var(--vscode-terminal-ansiGreen);
+}
+
+/* 工具提示增强 */
+.service-command:hover .command-text,
+.service-env:hover {
+  cursor: help;
+}
+
+/* 代码高亮 */
+.json-textarea {
+  tab-size: 2;
+}
+
+/* 拖拽样式 */
+.service-editor.dragging {
+  opacity: 0.5;
+  transform: rotate(2deg);
+}
+
+.service-editor.drag-over {
+  border-color: var(--vscode-focusBorder);
+  background-color: var(--vscode-list-hoverBackground);
+}

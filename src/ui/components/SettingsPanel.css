@@ -1,0 +1,663 @@
+/* 设置面板样式 */
+
+.settings-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--vscode-editor-background);
+}
+
+/* 设置头部 */
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  background-color: var(--vscode-tab-activeBackground);
+}
+
+.header-title h2 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+.header-title p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--vscode-descriptionForeground);
+  line-height: 1.4;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.changes-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--vscode-notificationsWarningIcon-foreground);
+  font-weight: 500;
+}
+
+.changes-indicator .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--vscode-notificationsWarningIcon-foreground);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 设置内容 */
+.settings-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* 设置导航 */
+.settings-nav {
+  width: 280px;
+  background-color: var(--vscode-sideBar-background);
+  border-right: 1px solid var(--vscode-panel-border);
+  overflow-y: auto;
+  padding: 16px 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  color: var(--vscode-sideBar-foreground);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.nav-item.active {
+  background-color: var(--vscode-list-activeSelectionBackground);
+  color: var(--vscode-list-activeSelectionForeground);
+  border-right: 2px solid var(--vscode-focusBorder);
+}
+
+.nav-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.nav-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.nav-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.nav-description {
+  font-size: 11px;
+  color: var(--vscode-descriptionForeground);
+  line-height: 1.3;
+}
+
+/* 设置主面板 */
+.settings-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.settings-group {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.settings-group h3 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+/* 设置项 */
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.setting-label label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vscode-foreground);
+  margin-bottom: 4px;
+}
+
+.setting-label p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--vscode-descriptionForeground);
+  line-height: 1.4;
+}
+
+.setting-item input[type="text"],
+.setting-item input[type="number"],
+.setting-item select {
+  min-width: 200px;
+  padding: 6px 10px;
+  border: 1px solid var(--vscode-input-border);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.setting-item input:focus,
+.setting-item select:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+  box-shadow: 0 0 0 1px var(--vscode-focusBorder);
+}
+
+/* 开关组件 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--vscode-input-background);
+  border: 1px solid var(--vscode-input-border);
+  transition: 0.3s;
+  border-radius: 12px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--vscode-input-foreground);
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--vscode-button-background);
+  border-color: var(--vscode-button-background);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+  background-color: var(--vscode-button-foreground);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 0 2px var(--vscode-focusBorder);
+}
+
+/* 列表编辑器 */
+.list-editor {
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.list-items {
+  margin-bottom: 8px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background-color: var(--vscode-input-background);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.item-text {
+  flex: 1;
+  font-size: 12px;
+  color: var(--vscode-foreground);
+  word-break: break-all;
+}
+
+.item-text code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background-color: var(--vscode-textCodeBlock-background);
+  color: var(--vscode-textPreformat-foreground);
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+.list-add {
+  display: flex;
+  gap: 8px;
+}
+
+.list-add input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--vscode-input-border);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.list-add input:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+  box-shadow: 0 0 0 1px var(--vscode-focusBorder);
+}
+
+/* 信息面板 */
+.setting-info {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: var(--vscode-textBlockQuote-background);
+  border-left: 3px solid var(--vscode-textBlockQuote-border);
+  border-radius: 4px;
+}
+
+.setting-info h4 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+.setting-info ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.setting-info li {
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--vscode-foreground);
+  line-height: 1.4;
+}
+
+.setting-info strong {
+  color: var(--vscode-foreground);
+  font-weight: 600;
+}
+
+/* 警告面板 */
+.setting-warning {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: rgba(255, 193, 7, 0.1);
+  border-left: 3px solid var(--vscode-notificationsWarningIcon-foreground);
+  border-radius: 4px;
+}
+
+.setting-warning h4 {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vscode-notificationsWarningIcon-foreground);
+}
+
+.setting-warning p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--vscode-foreground);
+  line-height: 1.4;
+}
+
+/* 信息网格 */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: var(--vscode-input-background);
+  border-radius: 4px;
+}
+
+.info-label {
+  font-size: 12px;
+  color: var(--vscode-descriptionForeground);
+}
+
+.info-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--vscode-foreground);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .settings-content {
+    flex-direction: column;
+  }
+  
+  .settings-nav {
+    width: 100%;
+    max-height: 200px;
+    border-right: none;
+    border-bottom: 1px solid var(--vscode-panel-border);
+    display: flex;
+    overflow-x: auto;
+    padding: 8px 0;
+  }
+  
+  .nav-item {
+    flex-shrink: 0;
+    min-width: 200px;
+    padding: 8px 16px;
+  }
+  
+  .nav-item.active {
+    border-right: none;
+    border-bottom: 2px solid var(--vscode-focusBorder);
+  }
+  
+  .settings-main {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  
+  .header-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .setting-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .setting-item input[type="text"],
+  .setting-item input[type="number"],
+  .setting-item select {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .list-editor {
+    min-width: auto;
+    max-width: none;
+  }
+  
+  .nav-item {
+    min-width: 150px;
+  }
+  
+  .nav-description {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-header {
+    padding: 16px;
+  }
+  
+  .header-title h2 {
+    font-size: 18px;
+  }
+  
+  .settings-main {
+    padding: 12px;
+  }
+  
+  .settings-group h3 {
+    font-size: 16px;
+  }
+  
+  .setting-item {
+    padding: 12px 0;
+  }
+  
+  .nav-item {
+    min-width: 120px;
+    padding: 6px 12px;
+  }
+  
+  .nav-name {
+    font-size: 13px;
+  }
+  
+  .nav-icon {
+    font-size: 16px;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 滚动条样式 */
+.settings-nav::-webkit-scrollbar,
+.settings-main::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.settings-nav::-webkit-scrollbar-track,
+.settings-main::-webkit-scrollbar-track {
+  background: var(--vscode-scrollbarSlider-background);
+}
+
+.settings-nav::-webkit-scrollbar-thumb,
+.settings-main::-webkit-scrollbar-thumb {
+  background: var(--vscode-scrollbarSlider-background);
+  border-radius: 4px;
+}
+
+.settings-nav::-webkit-scrollbar-thumb:hover,
+.settings-main::-webkit-scrollbar-thumb:hover {
+  background: var(--vscode-scrollbarSlider-hoverBackground);
+}
+
+/* 动画效果 */
+.nav-item {
+  transition: all 0.2s ease;
+}
+
+.setting-item {
+  transition: border-color 0.2s ease;
+}
+
+.slider {
+  transition: all 0.3s ease;
+}
+
+.button {
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.list-item {
+  transition: all 0.2s ease;
+}
+
+.list-item:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+/* 焦点样式 */
+.nav-item:focus {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: -2px;
+}
+
+.switch:focus-within {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+.list-add button:focus {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: 1px;
+}
+
+/* 加载状态 */
+.settings-panel.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.settings-panel.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 错误状态 */
+.setting-item.error input,
+.setting-item.error select {
+  border-color: var(--vscode-errorForeground);
+}
+
+.setting-item.error .setting-label label {
+  color: var(--vscode-errorForeground);
+}
+
+/* 成功状态 */
+.setting-item.success input,
+.setting-item.success select {
+  border-color: var(--vscode-terminal-ansiGreen);
+}
+
+/* 禁用状态 */
+.setting-item.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 高亮效果 */
+.setting-item.highlight {
+  background-color: var(--vscode-list-hoverBackground);
+  border-radius: 4px;
+  margin: 0 -8px;
+  padding: 16px 8px;
+}
+
+/* 工具提示 */
+.setting-label label[title]:hover,
+.info-value[title]:hover {
+  cursor: help;
+}
+
+/* 深色主题适配 */
+@media (prefers-color-scheme: dark) {
+  .setting-warning {
+    background-color: rgba(255, 193, 7, 0.15);
+  }
+}
+
+/* 浅色主题适配 */
+@media (prefers-color-scheme: light) {
+  .setting-warning {
+    background-color: rgba(255, 193, 7, 0.08);
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .settings-panel {
+    height: auto;
+  }
+  
+  .settings-nav {
+    display: none;
+  }
+  
+  .settings-content {
+    flex-direction: column;
+  }
+  
+  .header-actions {
+    display: none;
+  }
+  
+  .button {
+    display: none;
+  }
+}

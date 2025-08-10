@@ -1,0 +1,439 @@
+{
+  "name": "add-tool-mcp",
+  "displayName": "Add Tool MCP",
+  "description": "A powerful VS Code extension for managing Model Context Protocol (MCP) configurations",
+  "version": "1.0.0",
+  "publisher": "Leo-拥抱AI",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets",
+    "Formatters"
+  ],
+  "keywords": [
+    "mcp",
+    "json",
+    "configuration",
+    "manager",
+    "cursor",
+    "windsurf"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:mcpManager.openPanel",
+    "workspaceContains:**/mcp.json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mcpManager.openPanel",
+        "title": "打开MCP服务管理器",
+        "category": "MCP管理器",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "mcpManager.addService",
+        "title": "添加MCP服务",
+        "category": "MCP管理器",
+        "icon": "$(add)"
+      },
+      {
+        "command": "mcpManager.editService",
+        "title": "编辑MCP服务",
+        "category": "MCP管理器",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "mcpManager.deleteService",
+        "title": "删除MCP服务",
+        "category": "MCP管理器",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "mcpManager.mergeConfigs",
+        "title": "合并配置文件",
+        "category": "MCP管理器",
+        "icon": "$(merge)"
+      },
+      {
+        "command": "mcpManager.detectFiles",
+        "title": "检测配置文件",
+        "category": "MCP管理器",
+        "icon": "$(search)"
+      },
+      {
+        "command": "mcpManager.importFromClipboard",
+        "title": "从剪贴板导入配置",
+        "category": "MCP管理器",
+        "icon": "$(clippy)"
+      },
+      {
+        "command": "mcpManager.exportConfig",
+        "title": "导出配置",
+        "category": "MCP管理器",
+        "icon": "$(export)"
+      },
+      {
+        "command": "mcpManager.openSettings",
+        "title": "打开插件设置",
+        "category": "MCP管理器",
+        "icon": "$(settings)"
+      },
+      {
+        "command": "mcpManager.toggleAutoDetection",
+        "title": "切换自动检测",
+        "category": "MCP管理器",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "mcpManager.triggerDetection",
+        "title": "手动触发检测",
+        "category": "MCP管理器",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "mcpManager.clearDetectionHistory",
+        "title": "清除检测历史",
+        "category": "MCP管理器",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "mcpManager.showNotificationHistory",
+        "title": "显示通知历史",
+        "category": "MCP管理器",
+        "icon": "$(history)"
+      },
+      {
+        "command": "mcpManager.clearNotificationHistory",
+        "title": "清除通知历史",
+        "category": "MCP管理器",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "mcpManager.showErrorHistory",
+        "title": "显示错误历史",
+        "category": "MCP管理器",
+        "icon": "$(error)"
+      },
+      {
+        "command": "mcpManager.clearErrorHistory",
+        "title": "清除错误历史",
+        "category": "MCP管理器",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "mcpManager.validateConfiguration",
+        "title": "验证配置文件",
+        "category": "MCP管理器",
+        "icon": "$(check)"
+      },
+      {
+        "command": "mcpManager.quickValidate",
+        "title": "快速验证",
+        "category": "MCP管理器",
+        "icon": "$(zap)"
+      },
+      {
+        "command": "mcpManager.showFeedbackHistory",
+        "title": "显示反馈历史",
+        "category": "MCP管理器",
+        "icon": "$(feedback)"
+      },
+      {
+        "command": "mcpManager.clearFeedbackHistory",
+        "title": "清除反馈历史",
+        "category": "MCP管理器",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "mcpManager.showUsageStatistics",
+        "title": "显示使用统计",
+        "category": "MCP管理器",
+        "icon": "$(graph)"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "mcpManager.addService",
+          "when": "resourceExtname == .json",
+          "group": "mcp@1"
+        },
+        {
+          "command": "mcpManager.mergeConfigs",
+          "when": "resourceFilename == mcp.json",
+          "group": "mcp@2"
+        },
+        {
+          "command": "mcpManager.validateConfiguration",
+          "when": "resourceFilename == mcp.json",
+          "group": "mcp@3"
+        },
+        {
+          "command": "mcpManager.detectFiles",
+          "when": "explorerResourceIsFolder",
+          "group": "mcp@4"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "mcpManager.addService",
+          "when": "resourceExtname == .json",
+          "group": "mcp@1"
+        },
+        {
+          "command": "mcpManager.importFromClipboard",
+          "when": "resourceExtname == .json",
+          "group": "mcp@2"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "mcpManager.openPanel"
+        },
+        {
+          "command": "mcpManager.addService"
+        },
+        {
+          "command": "mcpManager.mergeConfigs"
+        },
+        {
+          "command": "mcpManager.detectFiles"
+        },
+        {
+          "command": "mcpManager.importFromClipboard"
+        },
+        {
+          "command": "mcpManager.exportConfig"
+        },
+        {
+          "command": "mcpManager.openSettings"
+        },
+        {
+          "command": "mcpManager.toggleAutoDetection"
+        },
+        {
+          "command": "mcpManager.triggerDetection"
+        },
+        {
+          "command": "mcpManager.clearDetectionHistory"
+        },
+        {
+          "command": "mcpManager.showNotificationHistory"
+        },
+        {
+          "command": "mcpManager.clearNotificationHistory"
+        },
+        {
+          "command": "mcpManager.showErrorHistory"
+        },
+        {
+          "command": "mcpManager.clearErrorHistory"
+        },
+        {
+          "command": "mcpManager.validateConfiguration"
+        },
+        {
+          "command": "mcpManager.quickValidate"
+        },
+        {
+          "command": "mcpManager.showFeedbackHistory"
+        },
+        {
+          "command": "mcpManager.clearFeedbackHistory"
+        },
+        {
+          "command": "mcpManager.showUsageStatistics"
+        }
+      ]
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "mcpManager",
+          "name": "MCP服务管理器",
+          "when": "workspaceHasPackageJSON"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mcpManager",
+          "title": "MCP配置管理器",
+          "icon": "$(settings-gear)"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "MCP配置管理器",
+      "properties": {
+        "mcpManager.autoDetect": {
+          "type": "boolean",
+          "default": true,
+          "description": "自动检测工作区中的mcp.json文件"
+        },
+        "mcpManager.watchFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "监控配置文件变化"
+        },
+        "mcpManager.backupOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "保存时自动备份配置文件"
+        },
+        "mcpManager.mergeStrategy": {
+          "type": "string",
+          "enum": ["smart", "manual", "always-prompt"],
+          "default": "smart",
+          "description": "配置合并策略"
+        },
+        "mcpManager.detectionPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/mcp.json",
+            "**/.cursor/mcp.json",
+            "**/.windsurf/mcp.json"
+          ],
+          "description": "配置文件检测路径"
+        },
+        "mcpManager.excludePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/build/**"
+          ],
+          "description": "排除的文件模式"
+        },
+        "mcpManager.validation.enableStrictMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用严格验证模式"
+        },
+        "mcpManager.validation.enableWarnings": {
+          "type": "boolean",
+          "default": true,
+          "description": "显示验证警告"
+        },
+        "mcpManager.validation.enableSuggestions": {
+          "type": "boolean",
+          "default": true,
+          "description": "显示修复建议"
+        },
+        "mcpManager.validation.maxErrors": {
+          "type": "number",
+          "default": 50,
+          "description": "最大错误数量限制"
+        },
+        "mcpManager.feedback.enableCollection": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用反馈收集"
+        },
+        "mcpManager.feedback.enableAnalytics": {
+          "type": "boolean",
+          "default": false,
+          "description": "启用使用分析"
+        },
+        "mcpManager.feedback.timeout": {
+          "type": "number",
+          "default": 5000,
+          "description": "反馈超时时间（毫秒）"
+        },
+        "mcpManager.feedback.maxHistorySize": {
+          "type": "number",
+          "default": 100,
+          "description": "最大历史记录数量"
+        },
+        "mcpManager.feedback.enableHaptic": {
+          "type": "boolean",
+          "default": false,
+          "description": "启用触觉反馈"
+        },
+        "mcpManager.feedback.enableSound": {
+          "type": "boolean",
+          "default": false,
+          "description": "启用声音反馈"
+        },
+        "mcpManager.autoDetection.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用自动检测"
+        },
+        "mcpManager.autoDetection.interval": {
+          "type": "number",
+          "default": 30000,
+          "description": "自动检测间隔（毫秒）"
+        },
+        "mcpManager.autoDetection.minConfidence": {
+          "type": "number",
+          "default": 0.7,
+          "description": "最小置信度阈值"
+        },
+        "mcpManager.autoDetection.notifyNewFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "发现新文件时通知"
+        },
+        "mcpManager.autoDetection.autoImport": {
+          "type": "boolean",
+          "default": false,
+          "description": "自动导入检测到的配置"
+        },
+        "mcpManager.autoDetection.deepScan": {
+          "type": "boolean",
+          "default": false,
+          "description": "启用深度扫描"
+        },
+        "mcpManager.autoDetection.maxFileSize": {
+          "type": "number",
+          "default": 1048576,
+          "description": "最大文件大小（字节）"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "package": "vsce package",
+    "test": "node ./out/test/runTest.js",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile && npm run lint"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "ts-loader": "^9.4.1",
+    "css-loader": "^6.7.2",
+    "style-loader": "^3.3.1",
+    "@vscode/vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "jsonpath-plus": "^7.2.0"
+  },
+  "author": "Leo-拥抱AI"
+}

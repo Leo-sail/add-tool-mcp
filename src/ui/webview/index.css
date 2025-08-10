@@ -1,0 +1,590 @@
+/* WebView全局样式 */
+
+/* CSS变量定义 - 与VS Code主题保持一致 */
+:root {
+  /* 基础颜色 */
+  --vscode-foreground: var(--vscode-foreground, #cccccc);
+  --vscode-background: var(--vscode-editor-background, #1e1e1e);
+  --vscode-descriptionForeground: var(--vscode-descriptionForeground, #cccccc99);
+  
+  /* 编辑器颜色 */
+  --vscode-editor-background: var(--vscode-editor-background, #1e1e1e);
+  --vscode-editor-foreground: var(--vscode-editor-foreground, #d4d4d4);
+  
+  /* 输入框颜色 */
+  --vscode-input-background: var(--vscode-input-background, #3c3c3c);
+  --vscode-input-foreground: var(--vscode-input-foreground, #cccccc);
+  --vscode-input-border: var(--vscode-input-border, #3c3c3c);
+  
+  /* 按钮颜色 */
+  --vscode-button-background: var(--vscode-button-background, #0e639c);
+  --vscode-button-foreground: var(--vscode-button-foreground, #ffffff);
+  --vscode-button-hoverBackground: var(--vscode-button-hoverBackground, #1177bb);
+  
+  /* 面板颜色 */
+  --vscode-panel-border: var(--vscode-panel-border, #2d2d30);
+  --vscode-tab-activeBackground: var(--vscode-tab-activeBackground, #1e1e1e);
+  --vscode-tab-activeForeground: var(--vscode-tab-activeForeground, #ffffff);
+  --vscode-tab-inactiveForeground: var(--vscode-tab-inactiveForeground, #cccccc80);
+  --vscode-tab-hoverBackground: var(--vscode-tab-hoverBackground, #2c2c2c);
+  
+  /* 列表颜色 */
+  --vscode-list-hoverBackground: var(--vscode-list-hoverBackground, #2a2d2e);
+  --vscode-list-activeSelectionBackground: var(--vscode-list-activeSelectionBackground, #094771);
+  --vscode-list-activeSelectionForeground: var(--vscode-list-activeSelectionForeground, #ffffff);
+  
+  /* 侧边栏颜色 */
+  --vscode-sideBar-background: var(--vscode-sideBar-background, #252526);
+  --vscode-sideBar-foreground: var(--vscode-sideBar-foreground, #cccccc);
+  
+  /* 焦点颜色 */
+  --vscode-focusBorder: var(--vscode-focusBorder, #007acc);
+  
+  /* 错误和警告颜色 */
+  --vscode-errorForeground: var(--vscode-errorForeground, #f48771);
+  --vscode-notificationsWarningIcon-foreground: var(--vscode-notificationsWarningIcon-foreground, #ffcc02);
+  
+  /* 终端颜色 */
+  --vscode-terminal-ansiGreen: var(--vscode-terminal-ansiGreen, #16c60c);
+  
+  /* 徽章颜色 */
+  --vscode-badge-background: var(--vscode-badge-background, #4d4d4d);
+  --vscode-badge-foreground: var(--vscode-badge-foreground, #ffffff);
+  
+  /* 代码块颜色 */
+  --vscode-textCodeBlock-background: var(--vscode-textCodeBlock-background, #0a0a0a);
+  --vscode-textPreformat-foreground: var(--vscode-textPreformat-foreground, #d7ba7d);
+  
+  /* 引用块颜色 */
+  --vscode-textBlockQuote-background: var(--vscode-textBlockQuote-background, #7f7f7f1a);
+  --vscode-textBlockQuote-border: var(--vscode-textBlockQuote-border, #007acc80);
+  
+  /* 工具栏颜色 */
+  --vscode-toolbar-hoverBackground: var(--vscode-toolbar-hoverBackground, #5a5d5e50);
+  
+  /* 滚动条颜色 */
+  --vscode-scrollbarSlider-background: var(--vscode-scrollbarSlider-background, #79797966);
+  --vscode-scrollbarSlider-hoverBackground: var(--vscode-scrollbarSlider-hoverBackground, #646464b3);
+}
+
+/* 全局重置 */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--vscode-foreground);
+  background-color: var(--vscode-editor-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 基础元素样式 */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+p {
+  margin: 0;
+  color: var(--vscode-foreground);
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: var(--vscode-focusBorder);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background-color: var(--vscode-textCodeBlock-background);
+  color: var(--vscode-textPreformat-foreground);
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background-color: var(--vscode-textCodeBlock-background);
+  color: var(--vscode-textPreformat-foreground);
+  padding: 8px 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* 表单元素样式 */
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid var(--vscode-input-border);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--vscode-focusBorder);
+  box-shadow: 0 0 0 1px var(--vscode-focusBorder);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--vscode-descriptionForeground);
+}
+
+/* 按钮样式 */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  min-height: 32px;
+  white-space: nowrap;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button.primary {
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+}
+
+.button.primary:hover:not(:disabled) {
+  background-color: var(--vscode-button-hoverBackground);
+}
+
+.button.secondary {
+  background-color: transparent;
+  color: var(--vscode-foreground);
+  border: 1px solid var(--vscode-panel-border);
+}
+
+.button.secondary:hover:not(:disabled) {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+.button.danger {
+  background-color: var(--vscode-errorForeground);
+  color: #ffffff;
+}
+
+.button.danger:hover:not(:disabled) {
+  background-color: #e74c3c;
+}
+
+.button.small {
+  padding: 4px 8px;
+  font-size: 12px;
+  min-height: 24px;
+}
+
+.button.large {
+  padding: 12px 24px;
+  font-size: 14px;
+  min-height: 40px;
+}
+
+/* 徽章样式 */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  background-color: var(--vscode-badge-background);
+  color: var(--vscode-badge-foreground);
+}
+
+.badge.success {
+  background-color: var(--vscode-terminal-ansiGreen);
+  color: #ffffff;
+}
+
+.badge.warning {
+  background-color: var(--vscode-notificationsWarningIcon-foreground);
+  color: #000000;
+}
+
+.badge.error {
+  background-color: var(--vscode-errorForeground);
+  color: #ffffff;
+}
+
+/* 卡片样式 */
+.card {
+  background-color: var(--vscode-editor-background);
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.card.elevated {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 分隔线 */
+.divider {
+  height: 1px;
+  background-color: var(--vscode-panel-border);
+  margin: 16px 0;
+}
+
+.divider.vertical {
+  width: 1px;
+  height: auto;
+  margin: 0 16px;
+}
+
+/* 加载动画 */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--vscode-panel-border);
+  border-top: 2px solid var(--vscode-focusBorder);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 工具提示 */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-foreground);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  border: 1px solid var(--vscode-panel-border);
+  z-index: 1000;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vscode-scrollbarSlider-background);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vscode-scrollbarSlider-hoverBackground);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox滚动条 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vscode-scrollbarSlider-background) transparent;
+}
+
+/* 选择文本样式 */
+::selection {
+  background-color: var(--vscode-list-activeSelectionBackground);
+  color: var(--vscode-list-activeSelectionForeground);
+}
+
+::-moz-selection {
+  background-color: var(--vscode-list-activeSelectionBackground);
+  color: var(--vscode-list-activeSelectionForeground);
+}
+
+/* 焦点样式 */
+:focus {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: 1px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* 无障碍支持 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+  .button {
+    border: 2px solid currentColor;
+  }
+  
+  .card {
+    border-width: 2px;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .button {
+    display: none;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+
+/* 响应式字体大小 */
+@media (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+  
+  .button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  
+  .button.small {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+}
+
+/* 深色主题优化 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+  }
+}
+
+/* 浅色主题优化 */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #ffffff;
+    color: #333333;
+  }
+}
+
+/* 动画类 */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 实用类 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.gap-1 {
+  gap: 4px;
+}
+
+.gap-2 {
+  gap: 8px;
+}
+
+.gap-3 {
+  gap: 12px;
+}
+
+.gap-4 {
+  gap: 16px;
+}
+
+.mt-1 {
+  margin-top: 4px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mt-3 {
+  margin-top: 12px;
+}
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mb-1 {
+  margin-bottom: 4px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mb-3 {
+  margin-bottom: 12px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.p-1 {
+  padding: 4px;
+}
+
+.p-2 {
+  padding: 8px;
+}
+
+.p-3 {
+  padding: 12px;
+}
+
+.p-4 {
+  padding: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}

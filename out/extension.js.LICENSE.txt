@@ -1,0 +1,38 @@
+/**
+ * CommandManager - MCP服务命令管理器
+ *
+ * @author Leo-拥抱AI
+ * @version 1.0.0
+ * @description 处理所有MCP相关的VS Code命令
+ * @license MIT
+ *
+ * © 2024 Leo-拥抱AI. All rights reserved.
+ *
+ * 专注于AI工具开发，让开发更高效
+ */
+
+/**
+ * JsonParser - JSON配置解析器
+ *
+ * @author Leo-拥抱AI
+ * @version 1.0.0
+ * @description 解析和验证MCP配置JSON文件
+ * @license MIT
+ *
+ * © 2024 Leo-拥抱AI. All rights reserved.
+ *
+ * 专注于AI工具开发，让开发更高效
+ */
+
+/**
+ * MCPManagerProvider - MCP管理器WebView提供者
+ *
+ * @author Leo-拥抱AI
+ * @version 1.0.0
+ * @description 提供MCP配置管理的WebView界面
+ * @license MIT
+ *
+ * © 2024 Leo-拥抱AI. All rights reserved.
+ *
+ * 专注于AI工具开发，让开发更高效
+ */

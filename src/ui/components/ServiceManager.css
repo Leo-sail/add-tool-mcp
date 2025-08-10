@@ -1,0 +1,454 @@
+/* 服务管理器样式 */
+
+.service-manager {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 区域头部 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--vscode-foreground);
+}
+
+.service-count {
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--vscode-descriptionForeground);
+}
+
+.config-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.config-label {
+  color: var(--vscode-descriptionForeground);
+}
+
+.config-path {
+  padding: 2px 6px;
+  background-color: var(--vscode-badge-background);
+  color: var(--vscode-badge-foreground);
+  border-radius: 3px;
+  font-family: monospace;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 工具栏 */
+.service-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: var(--vscode-editor-background);
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 6px;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 搜索框 */
+.search-box {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
+}
+
+.search-input {
+  padding-right: 32px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--vscode-descriptionForeground);
+  pointer-events: none;
+}
+
+.filter-select {
+  min-width: 120px;
+}
+
+/* 服务表格 */
+.service-table-container {
+  flex: 1;
+  overflow: auto;
+  border: 1px solid var(--vscode-panel-border);
+  border-radius: 6px;
+}
+
+.service-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--vscode-editor-background);
+}
+
+.service-table th {
+  background-color: var(--vscode-tab-activeBackground);
+  color: var(--vscode-tab-activeForeground);
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.service-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s;
+}
+
+.service-table th.sortable:hover {
+  background-color: var(--vscode-tab-hoverBackground);
+}
+
+.service-table th.sorted {
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+}
+
+.sort-indicator {
+  margin-left: 4px;
+  font-size: 10px;
+}
+
+.service-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+  vertical-align: middle;
+}
+
+.service-row:hover {
+  background-color: var(--vscode-list-hoverBackground);
+}
+
+/* 服务名称列 */
+.service-name {
+  min-width: 150px;
+}
+
+.name-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-weight: 500;
+  color: var(--vscode-foreground);
+}
+
+.badge.small {
+  font-size: 9px;
+  padding: 1px 4px;
+}
+
+/* 状态列 */
+.service-status {
+  min-width: 80px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.status-badge.status-active {
+  background-color: rgba(0, 255, 0, 0.1);
+  color: #00ff00;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.status-badge.status-inactive {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+/* 命令列 */
+.service-command {
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.command-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 11px;
+  background-color: var(--vscode-textCodeBlock-background);
+  color: var(--vscode-textPreformat-foreground);
+  padding: 2px 4px;
+  border-radius: 3px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 描述列 */
+.service-description {
+  min-width: 150px;
+  max-width: 250px;
+}
+
+.description-text {
+  color: var(--vscode-descriptionForeground);
+  font-size: 12px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 修改时间列 */
+.service-modified {
+  min-width: 120px;
+}
+
+.modified-text {
+  font-size: 11px;
+  color: var(--vscode-descriptionForeground);
+}
+
+/* 操作列 */
+.service-actions {
+  min-width: 120px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.action-buttons .button.small {
+  padding: 4px 6px;
+  font-size: 12px;
+  min-width: auto;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--vscode-descriptionForeground);
+  min-height: 300px;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.empty-state h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--vscode-foreground);
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.empty-state .button {
+  margin-top: 8px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .service-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .toolbar-left {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .search-box {
+    max-width: none;
+  }
+  
+  .toolbar-right {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .service-table {
+    font-size: 11px;
+  }
+  
+  .service-table th,
+  .service-table td {
+    padding: 8px 4px;
+  }
+  
+  /* 隐藏一些列在小屏幕上 */
+  .service-description,
+  .service-modified {
+    display: none;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .action-buttons .button.small {
+    padding: 2px 4px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-table-container {
+    overflow-x: auto;
+  }
+  
+  .service-table {
+    min-width: 600px;
+  }
+  
+  .empty-state {
+    padding: 24px 16px;
+    min-height: 200px;
+  }
+  
+  .empty-icon {
+    font-size: 36px;
+  }
+}
+
+/* 加载状态 */
+.service-manager.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.service-manager.loading .service-table {
+  position: relative;
+}
+
+.service-manager.loading .service-table::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 动画效果 */
+.service-row {
+  transition: background-color 0.2s ease;
+}
+
+.status-badge {
+  transition: all 0.2s ease;
+}
+
+.action-buttons .button {
+  transition: all 0.2s ease;
+}
+
+.action-buttons .button:hover {
+  transform: translateY(-1px);
+}
+
+/* 表格滚动阴影 */
+.service-table-container {
+  position: relative;
+}
+
+.service-table-container::before {
+  content: '';
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to bottom, 
+    var(--vscode-panel-border) 0%, 
+    transparent 100%);
+  z-index: 2;
+}
+
+/* 工具提示增强 */
+.command-text:hover,
+.description-text:hover,
+.config-path:hover {
+  cursor: help;
+}
+
+/* 焦点样式 */
+.service-table th.sortable:focus {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: -2px;
+}
+
+.action-buttons .button:focus {
+  outline: 2px solid var(--vscode-focusBorder);
+  outline-offset: 1px;
+}
