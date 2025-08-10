@@ -288,7 +288,11 @@
         },
         "mcpManager.mergeStrategy": {
           "type": "string",
-          "enum": ["smart", "manual", "always-prompt"],
+          "enum": [
+            "smart",
+            "manual",
+            "always-prompt"
+          ],
           "default": "smart",
           "description": "配置合并策略"
         },
@@ -414,26 +418,28 @@
     "pretest": "npm run compile && npm run lint"
   },
   "devDependencies": {
-    "@types/vscode": "^1.74.0",
     "@types/node": "16.x",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
-    "@typescript-eslint/parser": "^5.45.0",
-    "@vscode/test-electron": "^2.2.0",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^2.15.0",
+    "css-loader": "^6.7.2",
     "eslint": "^8.28.0",
+    "glob": "^11.0.3",
+    "mocha": "^11.7.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.1",
     "typescript": "^4.9.4",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0",
-    "ts-loader": "^9.4.1",
-    "css-loader": "^6.7.2",
-    "style-loader": "^3.3.1",
-    "@vscode/vsce": "^2.15.0"
+    "webpack-cli": "^5.0.0"
   },
   "dependencies": {
+    "jsonpath-plus": "^7.2.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "jsonpath-plus": "^7.2.0"
+    "react-dom": "^18.2.0"
   },
   "author": "Leo-拥抱AI",
   "repository": {
