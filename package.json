@@ -435,5 +435,13 @@
     "react-dom": "^18.2.0",
     "jsonpath-plus": "^7.2.0"
   },
-  "author": "Leo-拥抱AI"
+  "author": "Leo-拥抱AI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Leo-sail/add-tool-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Leo-sail/add-tool-mcp/issues"
+  },
+  "homepage": "https://github.com/Leo-sail/add-tool-mcp#readme"
 }
